@@ -3,6 +3,9 @@
 This script automates the creation and linking of Bynder metaproperty product heirachy options based on a CSV input.  
 It ensures Level 1 → Level 2 → Level 3 dependencies are created and managed correctly via Bynder's API.
 
+Before running `updatemetadata.py`, you can run `skucheck.py` to identify which SKUs are currently missing in Bynder, comparing Bynder to a Google product feed. This allows you to prepare the CSV file with the necessary product, shade, and SKU data to ensure everything is up to date before the taxonomy sync.
+
+
 ---
 
 ## 🛠 Prerequisites
@@ -99,6 +102,5 @@ bynder-taxonomy-sync/
 
 
 
-## Pre-Step: Check Missing SKUs
 
-Before running `updatemetadata.py`, you can run `skucheck.py` to identify which SKUs are currently missing in Bynder. This allows you to prepare the CSV file with the necessary product, shade, and SKU data to ensure everything is up to date before the taxonomy sync.
+
