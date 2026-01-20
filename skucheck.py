@@ -2,13 +2,16 @@ import requests
 import xml.etree.ElementTree as ET
 import time
 import csv
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # --- Configuration ---
-BYNDER_DOMAIN = "caiacosmetics.bynder.com"
-CLIENT_ID = "${CLIENT_ID}"
-CLIENT_SECRET = "${CLIENT_SECRET}"
-SKU_METAPROPERTY_ID = "${SKU_METAPROPERTY_ID}"
+BYNDER_DOMAIN = os.getenv("BYNDER_DOMAIN")
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+SKU_METAPROPERTY_ID = os.getenv("SKU_METAPROPERTY_ID")
 
 # --- Step 1: Get OAuth token ---
 auth_response = requests.post(
@@ -87,7 +90,7 @@ for i, item in enumerate(root.findall('.//item')):
         sku = sku_elem.text.strip()
         feed_skus.add(sku)
 
-        title = title_elem.text.strip() if title_elem is not None else ""
+        title = title_elem.text.strip() if title_elem is not None and title_elem.text is not None else ""
         sku_to_title[sku] = title
 
     item_count += 1

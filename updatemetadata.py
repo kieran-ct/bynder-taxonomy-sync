@@ -3,6 +3,7 @@ import requests
 import time
 import json
 import re
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -115,7 +116,7 @@ with open(CSV_PATH, newline='', encoding='utf-8') as f:
             "product": row["Product"].strip(),
             "shade": row["Shade"].strip(),
             "product_shade": row["Product + Shade"].strip(),
-            "sku": row["SKU"].strip(),
+            "sku": row["Artnr"].strip(),
         })
 
 # === FETCH EXISTING OPTIONS ===
